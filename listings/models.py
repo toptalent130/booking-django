@@ -1,6 +1,9 @@
 from django.db import models
 
 
+class BlockDay(models.Model):
+    blockdays_start = models.DateTimeField('date start')
+    blockdays_end = models.DateTimeField('date end')
 class Listing(models.Model):
     HOTEL = 'hotel'
     APARTMENT = 'apartment'
@@ -8,7 +11,13 @@ class Listing(models.Model):
         ('hotel', 'Hotel'),
         ('apartment', 'Apartment'),
     )
-
+    blocksday = models.ForeignKey(
+        BlockDay,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='block_day'
+    )
     listing_type = models.CharField(
         max_length=16,
         choices=LISTING_TYPE_CHOICES,
@@ -20,7 +29,8 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
-    
+    # class Meta:
+    #       db_table = "Listing"
 
 class HotelRoomType(models.Model):
     hotel = models.ForeignKey(
@@ -65,12 +75,15 @@ class BookingInfo(models.Model):
         on_delete=models.CASCADE,
         related_name='booking_info',
     )
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    # price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.CharField(max_length=255,)
 
     def __str__(self):
-        if self.listing:
-            obj = self.listing
-        else:
-            obj = self.hotel_room_type
+        return self.price
+        # if self.listing:
+        #     obj = self.listing
+        # else:
+        #     obj = self.hotel_room_type
             
-        return f'{obj} {self.price}'
+        # return f'{obj} {self.price}'
+

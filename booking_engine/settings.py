@@ -57,6 +57,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'booking_engine.urls'
 
+# TEMPLATE_DIR = f'{ BASE_DIR }\\listings\\templates\\'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
