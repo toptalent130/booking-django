@@ -10,6 +10,7 @@ from rest_framework import mixins
 from rest_framework import generics
 from django.http import JsonResponse
 from datetime import datetime
+
 class ListingView(mixins.ListModelMixin,
                   mixins.CreateModelMixin,
                   generics.GenericAPIView):
@@ -37,6 +38,8 @@ class ListingView(mixins.ListModelMixin,
                                     "country": obj["fields"]["country"],
                                     "city": obj["fields"]["city"],
                                     "price": each.price })
+        data = sorted(data, key=lambda k: int(k['price']), reverse=False)
+
         return JsonResponse({"items": data},  content_type='application/json')
         # return self.list(request, *args, **kwargs)
     def post(self, request, *args, **kwargs):
