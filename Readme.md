@@ -57,29 +57,34 @@ http://localhost:8000/api/v1/units/?max_price=100&check_in=2021-12-09&check_out=
 ## Response example:
 
     {
-        "items": [
-            {
-                "listing_type": "Apartment",
-                "title": "Luxurious Studio",
-                "country": "UK",
-                "city": "London",
-                "price": "40"
-
-            },
-            {
-                "listing_type": "Hotel",
-                "title": "Hotel Lux 3***",
-                "country": "BG",
-                "city": "Sofia",
-                "price": "60" # This the price of the first Hotel Room Type with a Room without blocked days in the range
-
-            },
-            {
-                "listing_type": "Apartment",
-                "title": "Excellent 2 Bed Apartment Near Tower Bridge",
-                "country": "UK",
-                "city": "London",
-                "price": "90"
-            },
-        ]
-    }
+    "items": [
+        {
+            "listing_type": "apartment",
+            "title": "Luxurious Studio",
+            "country": "UK",
+            "city": "London",
+            "price": "40"
+        },
+        {
+            "listing_type": "hotel",
+            "title": "Hotel Lux 3***",
+            "country": "UK",
+            "city": "London",
+            "price": "50"
+        },
+        {
+            "listing_type": "hotel",
+            "title": "Hotel Lux 5***",
+            "country": "UK",
+            "city": "London",
+            "price": "60"
+        },
+        {
+            "listing_type": "apartment",
+            "title": "Excellent 2 Bed Apartment Near Tower Bridge",
+            "country": "UK",
+            "city": "London",
+            "price": "90"
+        }
+    ]
+}
